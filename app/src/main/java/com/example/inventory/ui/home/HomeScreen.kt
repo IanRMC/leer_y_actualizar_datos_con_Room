@@ -73,20 +73,25 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            // Top app with app title
+            InventoryTopAppBar(
+                title = stringResource(HomeDestination.titleRes),
+                canNavigateBack = false,
+                scrollBehavior = scrollBehavior
+            )
         },
         floatingActionButton = {
-            FloatingActionButton(
-                // onClick details
+        FloatingActionButton(
+                onClick = navigateToItemEntry,
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large))
             ) {
                 Icon(
-                    // Icon details
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(R.string.item_entry_title)
                 )
             }
         },
     ) { innerPadding ->
-
-        // Display List header and List of Items
         HomeBody(
             itemList = listOf(),  // Empty list is being passed in for itemList
             onItemClick = navigateToItemUpdate,
